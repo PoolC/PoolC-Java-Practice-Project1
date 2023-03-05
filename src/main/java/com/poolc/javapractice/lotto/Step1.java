@@ -10,6 +10,10 @@ public class Step1 {
         int buyAmount = sc.nextInt();
         sc.nextLine();
 
+        int lottoCount = buyAmount / 1000;
+        System.out.println(lottoCount + "개를 구매했습니다.");
+
+
     }
 }
 
