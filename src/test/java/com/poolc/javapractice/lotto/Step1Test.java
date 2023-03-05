@@ -2,9 +2,8 @@ package com.poolc.javapractice.lotto;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import java.lang.reflect.Array;
 import java.util.*;
+import java.text.DecimalFormat;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
@@ -45,5 +44,17 @@ public class Step1Test {
         expectedList.add(4);
         expectedList.add(3);
         Assertions.assertEquals(actualList, expectedList);
+    }
+
+    @Test
+    public void earningRateTest(){
+        Step1 step1 = new Step1();
+        ArrayList<Integer> lottoResultsTest = new ArrayList<>();
+        lottoResultsTest.add(3);
+        double actual = step1.earningRate(lottoResultsTest,14000);
+
+        double expected = -64.28;
+
+        Assertions.assertEquals(actual, expected);
     }
 }
