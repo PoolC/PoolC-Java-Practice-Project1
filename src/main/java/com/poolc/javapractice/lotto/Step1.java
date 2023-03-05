@@ -12,7 +12,7 @@ public class Step1 {
         int lottoCount = buyAmount / 1000;
         System.out.println(lottoCount + "개를 구매했습니다.");
 
-        ArrayList<Integer>[] lotto = makeLotto(lottoCount);
+        ArrayList<ArrayList<Integer>> lotto = makeLotto(lottoCount);
         System.out.println();
 
         System.out.println("지난 주 당첨 번호를 입력해 주세요.");
@@ -33,20 +33,20 @@ public class Step1 {
         System.out.printf("총 수익률은 %.2f%%입니다.", earningRate(lottoResults, buyAmount));
     }
 
-    public static ArrayList<Integer>[] makeLotto(int lottoCount) {
-        ArrayList<Integer>[] lotto = new ArrayList[lottoCount];
+    public static ArrayList<ArrayList<Integer>> makeLotto(int lottoCount) {
+        ArrayList<ArrayList<Integer>> lotto = new ArrayList<>(lottoCount);
         Random random = new Random();
         for (int i = 0; i < lottoCount; i++) {
-            lotto[i] = new ArrayList<>();
+            lotto.add(new ArrayList<>());
 
-            while (lotto[i].size() < 6) {
+            while (lotto.get(i).size() < 6) {
                 int num = random.nextInt(45) + 1;
-                if (!lotto[i].contains(num)) {
-                    lotto[i].add(num);
+                if (!lotto.get(i).contains(num)) {
+                    lotto.get(i).add(num);
                 }
             }
 
-            System.out.println(lotto[i].toString());
+            System.out.println(lotto.get(i).toString());
         }
         return lotto;
     }
@@ -62,11 +62,11 @@ public class Step1 {
         return winList;
     }
 
-    public static ArrayList<Integer> countResults(ArrayList<Integer> winList, ArrayList<Integer>[] lotto, int lottoCount) {
+    public static ArrayList<Integer> countResults(ArrayList<Integer> winList, ArrayList<ArrayList<Integer>> lotto, int lottoCount) {
         ArrayList<Integer> lottoResults = new ArrayList<>(lottoCount);
 
         for (int i = 0; i < lottoCount; i++) {
-            ArrayList<Integer> eachLotto = lotto[i];
+            ArrayList<Integer> eachLotto = lotto.get(i);
             lottoResults.add(countMatchedNumbers(winList, eachLotto));
         }
 
