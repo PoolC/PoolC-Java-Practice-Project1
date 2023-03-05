@@ -1,5 +1,7 @@
 package com.poolc.javapractice.lotto;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.*;
 
 public class Step1 {
@@ -30,7 +32,7 @@ public class Step1 {
         System.out.println("5개 일치 (1500000원) - " + Collections.frequency(lottoResults, 5) + "개");
         System.out.println("6개 일치 (2000000000원) - " + Collections.frequency(lottoResults, 6) + "개");
 
-        System.out.printf("총 수익률은 %.2f%%입니다.", earningRate(lottoResults, buyAmount));
+        System.out.printf("총 수익률은 %f%%입니다.", earningRate(lottoResults, buyAmount));
     }
 
     public static ArrayList<ArrayList<Integer>> makeLotto(int lottoCount) {
@@ -83,10 +85,12 @@ public class Step1 {
         return matchedCount;
     }
 
-    public static float earningRate(ArrayList<Integer> lottoResults, int buyAmount) {
-        float totalMoney = 5000 * Collections.frequency(lottoResults, 3) + 50000 * Collections.frequency(lottoResults, 4)
+    public static double earningRate(ArrayList<Integer> lottoResults, int buyAmount) {
+        double totalMoney = 5000 * Collections.frequency(lottoResults, 3) + 50000 * Collections.frequency(lottoResults, 4)
                 + 1500000 * Collections.frequency(lottoResults, 5) + 2000000000 * Collections.frequency(lottoResults, 6);
-        return (totalMoney-buyAmount)/buyAmount*100;
+        DecimalFormat df = new DecimalFormat("#.##");
+        df.setRoundingMode(RoundingMode.DOWN);
+        return Double.parseDouble(df.format(((totalMoney - buyAmount) / buyAmount * 100)));
     }
 }
 
