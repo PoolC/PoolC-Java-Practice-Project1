@@ -61,5 +61,15 @@ public class Step1 {
 
         return lottoResults;
     }
+
+    private static int countMatchedNumbers(ArrayList<Integer> winList, ArrayList<Integer> lotto){
+        int matchedCount = 0;
+        for (int i = 0; i < winList.size(); i++) {
+            if (lotto.contains(winList.get(i))) {
+                matchedCount++;
+            }
+        }
+        return matchedCount;
+    }
 }
 
