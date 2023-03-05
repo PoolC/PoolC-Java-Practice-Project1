@@ -33,14 +33,14 @@ public class Step1 {
         System.out.printf("총 수익률은 %.2f%%입니다.", earningRate(lottoResults, buyAmount));
     }
 
-    private static ArrayList<Integer>[] makeLotto(int lottoCount) {
+    static ArrayList<Integer>[] makeLotto(int lottoCount) {
         ArrayList<Integer>[] lotto = new ArrayList[lottoCount];
         Random random = new Random();
         for (int i = 0; i < lottoCount; i++) {
             lotto[i] = new ArrayList<>();
 
             while (lotto[i].size() < 6) {
-                int num = random.nextInt(44) + 1;
+                int num = random.nextInt(45) + 1;
                 if (!lotto[i].contains(num)) {
                     lotto[i].add(num);
                 }
