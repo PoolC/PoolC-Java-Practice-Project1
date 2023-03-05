@@ -17,6 +17,8 @@ public class Step1 {
 
         System.out.println("지난 주 당첨 번호를 입력해 주세요.");
         String win = sc.nextLine();
+
+        ArrayList<Integer> winList = winNumbers(win);
     }
 
     private static ArrayList<Integer>[] makeLotto(int lottoCount) {
@@ -35,6 +37,17 @@ public class Step1 {
             System.out.println(lotto[i].toString());
         }
         return lotto;
+    }
+
+    private static ArrayList<Integer> winNumbers(String winNumbers) {
+        StringTokenizer tzk = new StringTokenizer(winNumbers, ", ");
+        ArrayList<Integer> winList = new ArrayList<>(6);
+
+        while (tzk.hasMoreTokens()) {
+            winList.add(Integer.parseInt(tzk.nextToken()));
+        }
+
+        return winList;
     }
 }
 
