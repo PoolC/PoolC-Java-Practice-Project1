@@ -29,6 +29,8 @@ public class Step1 {
         System.out.println("4개 일치 (50000원) - " + Collections.frequency(lottoResults, 4) + "개");
         System.out.println("5개 일치 (1500000원) - " + Collections.frequency(lottoResults, 5) + "개");
         System.out.println("6개 일치 (2000000000원) - " + Collections.frequency(lottoResults, 6) + "개");
+
+        System.out.printf("총 수익률은 %.2f%%입니다.", earningRate(lottoResults, buyAmount));
     }
 
     private static ArrayList<Integer>[] makeLotto(int lottoCount) {
@@ -79,6 +81,12 @@ public class Step1 {
             }
         }
         return matchedCount;
+    }
+
+    private static float earningRate(ArrayList<Integer> lottoResults, int buyAmount) {
+        float totalMoney = 5000 * Collections.frequency(lottoResults, 3) + 50000 * Collections.frequency(lottoResults, 4)
+                + 1500000 * Collections.frequency(lottoResults, 5) + 2000000000 * Collections.frequency(lottoResults, 6);
+        return (totalMoney-buyAmount)/buyAmount*100;
     }
 }
 
