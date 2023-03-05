@@ -33,7 +33,7 @@ public class Step1 {
         System.out.printf("총 수익률은 %.2f%%입니다.", earningRate(lottoResults, buyAmount));
     }
 
-    static ArrayList<Integer>[] makeLotto(int lottoCount) {
+    public static ArrayList<Integer>[] makeLotto(int lottoCount) {
         ArrayList<Integer>[] lotto = new ArrayList[lottoCount];
         Random random = new Random();
         for (int i = 0; i < lottoCount; i++) {
@@ -51,7 +51,7 @@ public class Step1 {
         return lotto;
     }
 
-    private static ArrayList<Integer> winNumbers(String winNumbers) {
+    public static ArrayList<Integer> winNumbers(String winNumbers) {
         StringTokenizer tzk = new StringTokenizer(winNumbers, ", ");
         ArrayList<Integer> winList = new ArrayList<>(6);
 
@@ -62,7 +62,7 @@ public class Step1 {
         return winList;
     }
 
-    private static ArrayList<Integer> countResults(ArrayList<Integer> winList, ArrayList<Integer>[] lotto, int lottoCount) {
+    public static ArrayList<Integer> countResults(ArrayList<Integer> winList, ArrayList<Integer>[] lotto, int lottoCount) {
         ArrayList<Integer> lottoResults = new ArrayList<>(lottoCount);
 
         for (int i = 0; i < lottoCount; i++) {
@@ -73,7 +73,7 @@ public class Step1 {
         return lottoResults;
     }
 
-    private static int countMatchedNumbers(ArrayList<Integer> winList, ArrayList<Integer> lotto){
+    public static int countMatchedNumbers(ArrayList<Integer> winList, ArrayList<Integer> lotto){
         int matchedCount = 0;
         for (int i = 0; i < winList.size(); i++) {
             if (lotto.contains(winList.get(i))) {
@@ -83,7 +83,7 @@ public class Step1 {
         return matchedCount;
     }
 
-    private static float earningRate(ArrayList<Integer> lottoResults, int buyAmount) {
+    public static float earningRate(ArrayList<Integer> lottoResults, int buyAmount) {
         float totalMoney = 5000 * Collections.frequency(lottoResults, 3) + 50000 * Collections.frequency(lottoResults, 4)
                 + 1500000 * Collections.frequency(lottoResults, 5) + 2000000000 * Collections.frequency(lottoResults, 6);
         return (totalMoney-buyAmount)/buyAmount*100;
