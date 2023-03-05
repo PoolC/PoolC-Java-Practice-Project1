@@ -19,6 +19,7 @@ public class Step1 {
         String win = sc.nextLine();
 
         ArrayList<Integer> winList = winNumbers(win);
+        ArrayList<Integer> lottoResults = countResults(winList, lotto, lottoCount);
     }
 
     private static ArrayList<Integer>[] makeLotto(int lottoCount) {
@@ -48,6 +49,17 @@ public class Step1 {
         }
 
         return winList;
+    }
+
+    private static ArrayList<Integer> countResults(ArrayList<Integer> winList, ArrayList<Integer>[] lotto, int lottoCount) {
+        ArrayList<Integer> lottoResults = new ArrayList<>(lottoCount);
+
+        for (int i = 0; i < lottoCount; i++) {
+            ArrayList<Integer> eachLotto = lotto[i];
+            lottoResults.add(countMatchedNumbers(winList, eachLotto));
+        }
+
+        return lottoResults;
     }
 }
 
