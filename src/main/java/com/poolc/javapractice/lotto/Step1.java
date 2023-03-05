@@ -14,6 +14,9 @@ public class Step1 {
 
         ArrayList<Integer>[] lotto = makeLotto(lottoCount);
         System.out.println();
+
+        System.out.println("지난 주 당첨 번호를 입력해 주세요.");
+        String win = sc.nextLine();
     }
 
     private static ArrayList<Integer>[] makeLotto(int lottoCount) {
