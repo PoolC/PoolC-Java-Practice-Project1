@@ -64,13 +64,9 @@ public class Step1 {
     }
 
     public static int countMatchedNumbers(ArrayList<Integer> winList, ArrayList<Integer> lotto) {
-        int matchedCount = 0;
-        for (int i = 0; i < winList.size(); i++) {
-            if (lotto.contains(winList.get(i))) {
-                matchedCount++;
-            }
-        }
-        return matchedCount;
+        return (int) lotto.stream()
+                    .filter(winList::contains)
+                    .count();
     }
 
     public static double earningRate(ArrayList<Integer> lottoResults, int buyAmount) {
