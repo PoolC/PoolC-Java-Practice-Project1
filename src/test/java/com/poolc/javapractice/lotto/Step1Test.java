@@ -2,6 +2,8 @@ package com.poolc.javapractice.lotto;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.lang.reflect.Array;
 import java.util.*;
 import java.text.DecimalFormat;
 
@@ -23,7 +25,7 @@ public class Step1Test {
     @Test
     public void winNumbersTest(){
         Step1 step1 = new Step1();
-        ArrayList<Integer> actualList = step1.winNumbers("1, 2,3, 4, 5,6");
+        ArrayList<Integer> actualList = step1.winNumbers("1, 2,3, 4,  5,6");
         ArrayList<Integer> expectedList = new ArrayList<>();
         for (int i = 1; i < 7; i++){
             expectedList.add(i);
@@ -44,6 +46,21 @@ public class Step1Test {
         expectedList.add(4);
         expectedList.add(3);
         Assertions.assertEquals(actualList, expectedList);
+    }
+
+    @Test
+    public void resultTest(){
+        Step1 step1 = new Step1();
+        ArrayList<Integer> lottoResultsTest = new ArrayList<>(Arrays.asList(1, 2, 3, 3, 3, 4, 4));
+        ArrayList<Integer> actual = step1.result(lottoResultsTest);
+
+        ArrayList<Integer> expected = new ArrayList<>(4);
+        expected.add(3);
+        expected.add(2);
+        expected.add(0);
+        expected.add(0);
+
+        Assertions.assertEquals(actual, expected);
     }
 
     @Test
