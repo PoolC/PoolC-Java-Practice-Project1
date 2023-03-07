@@ -13,7 +13,7 @@ public class Step1 {
 
         ArrayList<ArrayList<Integer>> lotto = makeLotto(lottoCount);
         ArrayList<Integer> winList = input.getWinNumbers();
-        ArrayList<Integer> lottoResults = countResults(winList, lotto, lottoCount);
+        ArrayList<Integer> lottoResults = result(countResults(winList, lotto, lottoCount));
 
         Output output = new Output();
         output.printLottoCount(lottoCount);
@@ -53,14 +53,14 @@ public class Step1 {
     }
 
     public static ArrayList<Integer> countResults(ArrayList<Integer> winList, ArrayList<ArrayList<Integer>> lotto, int lottoCount) {
-        ArrayList<Integer> lottoResults = new ArrayList<>(lottoCount);
+        ArrayList<Integer> countedList = new ArrayList<>(lottoCount);
 
         for (int i = 0; i < lottoCount; i++) {
             ArrayList<Integer> eachLotto = lotto.get(i);
-            lottoResults.add(countMatchedNumbers(winList, eachLotto));
+            countedList.add(countMatchedNumbers(winList, eachLotto));
         }
 
-        return lottoResults;
+        return countedList;
     }
 
     public static int countMatchedNumbers(ArrayList<Integer> winList, ArrayList<Integer> lotto) {
@@ -69,9 +69,20 @@ public class Step1 {
                     .count();
     }
 
+    public static ArrayList<Integer> result(ArrayList<Integer> countedList){
+        ArrayList<Integer> lottoResults = new ArrayList<>(4);
+
+        for (int i = 3; i <= 6; i++){
+            lottoResults.add(Collections.frequency(countedList, i));
+        }
+
+        return lottoResults;
+    }
+
     public static double earningRate(ArrayList<Integer> lottoResults, int buyAmount) {
-        double totalMoney = 5000 * Collections.frequency(lottoResults, 3) + 50000 * Collections.frequency(lottoResults, 4)
-                + 1500000 * Collections.frequency(lottoResults, 5) + 2000000000 * Collections.frequency(lottoResults, 6);
+
+        double totalMoney = 5000 * lottoResults.get(0) + 50000 * lottoResults.get(1)
+                + 1500000 * lottoResults.get(2) + 2000000000 * lottoResults.get(3);
         DecimalFormat df = new DecimalFormat("#.##");
         df.setRoundingMode(RoundingMode.DOWN);
         return Double.parseDouble(df.format(((totalMoney - buyAmount) / buyAmount * 100)));
