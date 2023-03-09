@@ -22,5 +22,11 @@ public class Input {
         String win = sc.nextLine();
         return Step1.winNumbers(win);
     }
+
+    public int getBonusNumber(){
+        System.out.println("보너스 볼을 입력해 주세요.");
+        int bonusNumber = sc.nextInt();
+        return bonusNumber;
+    }
 }
 
