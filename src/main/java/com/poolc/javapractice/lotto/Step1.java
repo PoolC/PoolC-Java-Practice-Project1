@@ -17,7 +17,7 @@ public class Step1 {
 
         Output output = new Output();
         output.printLottoCount(lottoCount);
-        output.printWinStatistics(lottoResults);
+        output.printWinStatistics(lottoResults, 0);
         output.printEarningRate(earningRate(lottoResults, buyAmount));
     }
 
