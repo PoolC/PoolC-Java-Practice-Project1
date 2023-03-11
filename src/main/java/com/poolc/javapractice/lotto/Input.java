@@ -20,7 +20,15 @@ public class Input {
     public ArrayList<Integer> getWinNumbers() {
         System.out.println("지난 주 당첨 번호를 입력해 주세요.");
         String win = sc.nextLine();
-        return Step1.winNumbers(win);
+        return Lotto.winNumbers(win);
+    }
+
+    public int getBonusNumber(){
+        System.out.println("보너스 볼을 입력해 주세요.");
+        int bonusNumber = sc.nextInt();
+        sc.nextLine();
+        System.out.println();
+        return bonusNumber;
     }
 }
 

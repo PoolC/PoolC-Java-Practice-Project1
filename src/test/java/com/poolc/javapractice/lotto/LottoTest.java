@@ -3,17 +3,15 @@ package com.poolc.javapractice.lotto;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Array;
 import java.util.*;
-import java.text.DecimalFormat;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-public class Step1Test {
+public class LottoTest {
 
     @Test
     public void makeLottoTest(){
-        Step1 step1 = new Step1();
+        Lotto step1 = new Lotto();
         ArrayList<ArrayList<Integer>> lotto = step1.makeLotto(100);
         for (int i = 0; i < 10; i++){
             for (int j = 0; j < lotto.get(i).size(); j++){
@@ -24,7 +22,7 @@ public class Step1Test {
 
     @Test
     public void winNumbersTest(){
-        Step1 step1 = new Step1();
+        Lotto step1 = new Lotto();
         ArrayList<Integer> actualList = step1.winNumbers("1, 2,3, 4,  5,6");
         ArrayList<Integer> expectedList = new ArrayList<>();
         for (int i = 1; i < 7; i++){
@@ -35,7 +33,7 @@ public class Step1Test {
 
     @Test
     public void countResultsTest(){
-        Step1 step1 = new Step1();
+        Lotto step1 = new Lotto();
         ArrayList<Integer> winListTest = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
         ArrayList<ArrayList<Integer>> lottoTest = new ArrayList<>(2);
         lottoTest.add(new ArrayList<>(Arrays.asList(3, 4, 5, 6, 7, 8)));
@@ -50,7 +48,7 @@ public class Step1Test {
 
     @Test
     public void resultTest(){
-        Step1 step1 = new Step1();
+        Lotto step1 = new Lotto();
         ArrayList<Integer> lottoResultsTest = new ArrayList<>(Arrays.asList(1, 2, 3, 3, 3, 4, 4));
         ArrayList<Integer> actual = step1.result(lottoResultsTest);
 
@@ -65,10 +63,10 @@ public class Step1Test {
 
     @Test
     public void earningRateTest(){
-        Step1 step1 = new Step1();
+        Lotto step1 = new Lotto();
         ArrayList<Integer> lottoResultsTest = new ArrayList<>();
         lottoResultsTest.add(3);
-        double actual = step1.earningRate(lottoResultsTest,14000);
+        double actual = step1.earningRate(lottoResultsTest, 2,14000);
 
         double expected = -64.28;
 
